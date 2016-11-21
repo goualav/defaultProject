@@ -1,0 +1,119 @@
+// ==========================================================================
+// ITCSS + Foundation
+// ==========================================================================
+
+   /**
+    *
+    * FOUNDATION
+    *
+    * Fonts................Import every 
+    *
+    *
+    * SETTINGS
+    *
+    * Fonts................Import every local fonts
+    * Colors...............inuitcss’ core and setup settings.
+    * Global...............Project-wide variables.
+    *
+    *
+    * MIXINS
+    *
+    * Font-size............A mixin which guarantees baseline-friendly line-heights.
+    * Clearfix.............Micro clearfix mixin.
+    * Hidden...............Mixin for hiding elements.
+    *
+    *
+    * ELEMENTS
+    *
+    * Blank................Blank.
+    *
+    *
+    * OBJECTS
+    *
+    * Blank................Blank.
+    *
+    *
+    * COMPONENTS
+    *
+    * Buttons..............Buttons' default appearance.
+    * Headings.............Headings' default appearance.
+    * Images...............Images' default appearance.
+    * Inputs...............Inputs' default appearance.
+    * Links................Links' default appearance.
+    * Lists................Lists' default appearance.
+    * Paragraphs...........Paragraphs' default appearance.
+    *
+    *
+    * HACKS
+    *
+    *
+    * Hide.................Helper classes to hide content
+    * Clearfix.............Bind our clearfix onto a utility class.
+    * Print................Reset-like styles taken from the HTML5 Boilerplate.
+    *
+    */
+
+// ==========================================================================
+// FOUNDATION
+// ==========================================================================
+
+
+// ==========================================================================
+// SETTINGS
+// Used with preprocessors and contain font, colors definitions, etc.
+// ==========================================================================
+   @import "settings/settings.fonts" ;
+   @import "settings/settings.colors";
+   @import "settings/settings.global";
+
+
+// ==========================================================================
+// MIXINS
+// Globally used mixins and functions. It’s important not to output any CSS
+// in the first 2 layers
+// ==========================================================================
+   @import "mixins/mixins.font-size";
+   @import "mixins/mixins.clearfix" ;
+   @import "mixins/mixins.hidden"   ;
+
+
+// ==========================================================================
+// ELEMENTS 
+// Styling for bare HTML elements (like H1, A, etc.). These come with default
+// styling from the browser so we can redefine them here.
+// ==========================================================================
+   @import "elements/elements.buttons"    ;
+   @import "elements/elements.headings"   ;
+   @import "elements/elements.images"     ;
+   @import "elements/elements.inputs"     ; 
+   @import "elements/elements.links"      ;
+   @import "elements/elements.lists"      ;
+   @import "elements/elements.paragraphes";
+
+
+// ==========================================================================
+// OBJECTS 
+// Class-based selectors which define undecorated design patterns, for
+// example media object known from OOCSS
+// ==========================================================================
+   @import "objects/blank.blank";
+
+
+// ==========================================================================
+// COMPONENTS
+// Specific UI components. This is where majority of our work takes place and
+// our UI components are often composed of Objects and Components.
+// ==========================================================================
+   @import "components/blank.blank";
+
+
+// ==========================================================================
+// HACKS
+// Utilities and helper classes with ability to override anything which goes
+// before in the triangle, eg. hide helper class
+// ==========================================================================
+   @import "hacks/blank.blank";
+   //@import "Hacks/hacks.hide";
+   //@import "Hacks/hacks.clearfix";
+
+   @import "print";
