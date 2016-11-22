@@ -4,79 +4,90 @@
  * Last update: 2016/11/14
  * Author: Virgile Gouala <vgouala@castelis.com>
  *
- * Summary:
  *
- *  1. Dependencies
- *      A. Tools
- *      B. SCSS / SASS / CSS
- *      C. JavaScript
- *      D. Tools
- *  2. Dependencies' Options
- *  3. Variables
- *  4. Tasks
- *      A. Development
- *      B. Production
- *      C. Uglify
- *      D. Watch
- *  5. Default Task
+ *  DEPENDENCIES
+ *  Gulp.................Gulp's required dependencies
+ *  SCSS / SASS / CSS....Style's required
+ *  JavaScript...........JS' required dependencies
+ *  Tools................Other required dependencies
+ *
+ *  DEPENDENCIES' OPTIONS
+ *
+ *  VARIABLES
+ *
+ *  TASKS
+ *  Development..........Task for developper, use it in your staging
+ *  Production...........Task created compile SASS and clean CSS
+ *  Uglify...............Task that uglify the JS
+ *  Watch................Big Brother is watching your SASS' changes
+ *
+ *  DEFAULT TASK
 
  */
 
 
-/* ==========================================================================
-   1. Dependencies
-   ========================================================================== */
-    /* A. Init
-    ========================================================================== */
+
+// ==========================================================================
+// DEPENDENCIES
+// ==========================================================================
+
+    //
+    // Gulp
+    // ==========================================================================
     var gulp = require('gulp');
     var $    = require('gulp-load-plugins')();
 
-    /* B. SCSS / SASS / CSS
-    ========================================================================== */
+    //
+    // SCSS / SASS / CSS
+    // ==========================================================================
     var sass         = require('gulp-sass');
     var sourcemaps   = require('gulp-sourcemaps');
     var autoprefixer = require('gulp-autoprefixer');
     var cleanCSS     = require('gulp-clean-css');
 
-    /* C. JavaScript
-    ========================================================================== */
+    //
+    // JavaScript
+    // ==========================================================================
     var uglify = require('gulp-uglify');
 
-    /* D. Tools
-    ========================================================================== */
+    //
+    // Tools
+    // ==========================================================================
     const rename = require('gulp-rename');
     const size   = require('gulp-size');
 
-/* ==========================================================================
-   2. Dependencies' Options
-   ========================================================================== */
-   var autoprefixerOptions = {
-    browsers: ['last 2 versions'],
-    cascade : true
-  };
-  var sassPathsFoundation = [
-  'bower_components/foundation-sites/scss',
-  'bower_components/motion-ui/src'
-  ];
-  var sassOptions = {
-    errLogToConsole: true,
-    outputStyle    : 'expanded',
-    includePaths: sassPathsFoundation,
-  };
+// ==========================================================================
+// DEPENDENCIES' OPTIONS
+// ==========================================================================
+    var autoprefixerOptions = {
+      browsers: ['last 2 versions'],
+      cascade : true
+    };
+    var sassPathsFoundation = [
+    'bower_components/foundation-sites/scss',
+    'bower_components/motion-ui/src'
+    ];
+    var sassOptions = {
+      errLogToConsole: true,
+      outputStyle    : 'expanded',
+      includePaths: sassPathsFoundation,
+    };
 
-/* ==========================================================================
-   3. Variables
-   ========================================================================== */
+// ==========================================================================
+// VARIABLES
+// ==========================================================================
    var inputCss  = './assets/css/scss/**/*.scss';
    var outputCss = './assets/css';
    var inputJs   = './assets/js/**/*.js';
    var outputJs  = './assets/js/';
 
-/* ==========================================================================
-   4. Tasks
-   ========================================================================== */
-   /* A. Developpement
-   ========================================================================== */
+// ==========================================================================
+// TASKS
+// ==========================================================================
+
+    //
+    // Dev
+    // ==========================================================================
    gulp.task('sass', function () {
     return gulp
     .src(inputCss)
@@ -88,8 +99,9 @@
     .pipe(gulp.dest(outputCss));
     });
 
-    /* B. Clean
-    ========================================================================== */
+    //
+    // Clean
+    // ==========================================================================
     gulp.task('clean', function () {
       return gulp
       .src(inputCss)
@@ -100,8 +112,9 @@
       .pipe(gulp.dest(outputCss));
       });
 
-    /* C. Uglify
-    ========================================================================== */
+    //
+    // Uglify
+    // ==========================================================================
     gulp.task('uglify', function () {
       gulp.src(inputJs)
       .pipe(uglify())
@@ -109,8 +122,9 @@
       .pipe(gulp.dest(outputJs))
       });
 
-    /* D. Watch
-    ========================================================================== */
+    //
+    // Watch
+    // ==========================================================================
     gulp.task('watch', function() {
       return gulp
       .watch(inputCss, ['sass'])
@@ -119,8 +133,8 @@
         });
       });
 
-/* ==========================================================================
-   5. Default Task
-   ========================================================================== */
+// ==========================================================================
+// DEFAULT TASK
+// ==========================================================================
    gulp.task('default', ['watch']);
    gulp.task('prod', ['clean']);
