@@ -55,6 +55,7 @@
     // ==========================================================================
     const rename = require('gulp-rename');
     const size   = require('gulp-size');
+    var connect  = require('gulp-connect');
 
 // ==========================================================================
 // DEPENDENCIES' OPTIONS
@@ -96,7 +97,8 @@
     .pipe(sourcemaps.write())
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(size())
-    .pipe(gulp.dest(outputCss));
+    .pipe(gulp.dest(outputCss))
+    .pipe(connect.reload());
     });
 
     //
@@ -122,6 +124,17 @@
       .pipe(gulp.dest(outputJs))
       });
 
+
+    //
+    // Connect (LiveReload)
+    // ==========================================================================
+    gulp.task('connect', function() {
+      connect.server({
+        livereload: true
+        });
+      });
+
+
     //
     // Watch
     // ==========================================================================
@@ -136,5 +149,5 @@
 // ==========================================================================
 // DEFAULT TASK
 // ==========================================================================
-   gulp.task('default', ['watch']);
+   gulp.task('default', ['watch', 'connect']);
    gulp.task('prod', ['clean']);
