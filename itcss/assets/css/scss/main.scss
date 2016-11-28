@@ -23,6 +23,11 @@
     * Hidden...............Mixin for hiding elements.
     *
     *
+    * GENERIC
+    *
+    * Blank...............Blank
+    *
+    *
     * ELEMENTS
     *
     * Blank................Blank.
@@ -55,11 +60,11 @@
 
 @charset 'utf-8';
 
-
 // ==========================================================================
 // SETTINGS
 // Used with preprocessors and contain font, colors definitions, etc.
 // ==========================================================================
+   @import "settings/settings.blank" ;
    @import "settings/settings.fonts" ;
    @import "settings/settings.colors";
    @import "settings/settings.global";
@@ -70,9 +75,19 @@
 // Globally used mixins and functions. It’s important not to output any CSS
 // in the first 2 layers
 // ==========================================================================
+   @import "mixins/mixins.blank";
    @import "mixins/mixins.font-size";
-   @import "mixins/mixins.clearfix" ;
-   @import "mixins/mixins.hidden"   ;
+   @import "mixins/mixins.clearfix";
+   @import "mixins/mixins.hidden";
+
+
+// ==========================================================================
+// GENERIC
+// Styling for bare HTML elements (like H1, A, etc.). These come with default
+// styling from the browser so we can redefine them here.
+// ==========================================================================
+   @import "generics/generics.blank";
+   @import "generics/generics.box-sizing";
 
 
 // ==========================================================================
@@ -80,13 +95,14 @@
 // Styling for bare HTML elements (like H1, A, etc.). These come with default
 // styling from the browser so we can redefine them here.
 // ==========================================================================
-   @import "elements/elements.buttons"    ;
-   @import "elements/elements.headings"   ;
-   @import "elements/elements.images"     ;
-   @import "elements/elements.inputs"     ; 
-   @import "elements/elements.links"      ;
-   @import "elements/elements.lists"      ;
-   @import "elements/elements.paragraphes";
+   @import "elements/elements.blank";
+   @import "elements/elements.button"    ; 
+   @import "elements/elements.heading"   ;
+   @import "elements/elements.image"     ;
+   @import "elements/elements.input"     ; 
+   @import "elements/elements.link"      ;
+   @import "elements/elements.list"      ;
+   @import "elements/elements.paragraph";
 
 
 // ==========================================================================
@@ -94,7 +110,8 @@
 // Class-based selectors which define undecorated design patterns, for
 // example media object known from OOCSS
 // ==========================================================================
-   @import "objects/blank.blank";
+   @import "objects/objects.blank";
+   @import "objects/objects.body";
 
 
 // ==========================================================================
@@ -102,15 +119,19 @@
 // Specific UI components. This is where majority of our work takes place and
 // our UI components are often composed of Objects and Components.
 // ==========================================================================
-   @import "components/blank.blank";
-
+   @import "components/components.blank";
+   @import "components/components.header";
+   @import "components/components.footer";
+   @import "components/components.navigation";
+   @import "components/components.slider";
+ 
 
 // ==========================================================================
 // HACKS
 // Utilities and helper classes with ability to override anything which goes
 // before in the triangle, eg. hide helper class
 // ==========================================================================
-   @import "hacks/blank.blank";
+   @import "hacks/hack.blank";
    //@import "Hacks/hacks.hide";
    //@import "Hacks/hacks.clearfix";
 
